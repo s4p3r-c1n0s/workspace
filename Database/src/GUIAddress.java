@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+class GUIAddress {
+	private Address address;
+	
+	public GUIAddress(){
+		address = new Address();
+	}
+	
+	public void setAll(){
+		address = new Address();
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Street : ");
+		address.setStreet(sc.nextLine());
+		System.out.print("City : ");
+		address.setCity(sc.nextLine());
+		System.out.print("Pincode : ");
+		address.setPincode(sc.nextInt());
+		sc.nextLine();
+	}
+	
+	public void getAll(){
+		System.out.print("Street:"+address.getStreet());
+		System.out.print(", City:"+address.getCity());
+		System.out.print(", Pin:"+address.getPincode());
+		System.out.print(", StudentId:"+address.getSid());
+		System.out.println();
+	}
+	public Address getAddressObject(){
+		return this.address;
+	}
+	public void setAddressObject(Address address){
+		this.address = address;
+	}
+}
