@@ -32,14 +32,16 @@ public class Form_action extends HttpServlet {
 		String password = request.getParameter("pass");
 		String name = request.getParameter("name");
 		String ageString = request.getParameter("age");
-		int age = Integer.parseInt(ageString);
 		String sexString = request.getParameter("sex");
-		char sex = sexString.charAt(0);
 		String course[] = request.getParameterValues("course") ;
+		String str = "";
 		if(ageString.equals("") || sexString.equals("") ||  name.equals("") || password.equals("")){
-			response.sendRedirect("StudentFirst");
+			str += "TOO MANY ERRORS";
+			response.sendRedirect("StudentFirst?str="+str);
 		}
 		else{
+			int age = Integer.parseInt(ageString);
+			char sex = sexString.charAt(0);
 			Student s = new Student(name,age,password,sex,course);
 			request.setAttribute("Student",s);
 			RequestDispatcher rd = request.getRequestDispatcher("Final");
