@@ -1,0 +1,14 @@
+import java.util.*;
+
+class UIManager{
+	Manager manager;
+	BankFactory bankFactory = new BankFactory();
+	void ManagerFunctions(){
+		manager = bankFactory.getBankObject();
+		Scanner sc = new Scanner();
+		int a=0;
+		switch(a){
+		case 1 : 
+		}
+	}
+}

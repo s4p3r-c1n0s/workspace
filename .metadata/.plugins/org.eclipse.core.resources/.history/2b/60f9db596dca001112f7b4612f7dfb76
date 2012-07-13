@@ -1,0 +1,15 @@
+import java.util.*;
+
+class GUIStudent {
+	private Student student;
+	
+	
+	public void getAll(){	
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Get Student Name : "); 
+		student.setName(sc.nextLine());
+		student.setMarks(sc.nextInt());
+		sc.nextLine();
+		student.setGrade(sc.nextLine().charAt(0));
+	}
+}

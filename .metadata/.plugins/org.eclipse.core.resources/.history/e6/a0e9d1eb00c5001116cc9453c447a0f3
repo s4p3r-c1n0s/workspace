@@ -1,0 +1,57 @@
+import java.util.*;
+class Accnt{
+	  
+	private int acc_no;
+	private double balance;
+	private String name;
+	private String type;
+	
+	static int auto_incr_acc_no = 1;
+	
+	public Accnt(){
+		acc_no=auto_incr_acc_no++;
+	}
+	
+	public Accnt(String Name, String Type, double Balance){
+		setter(Name,Type,Balance);
+	}
+	public void setter(String Name, String Type, double Balance){
+		name.equals(Name);
+		type.equals(Type);
+		balance = Balance;
+		if(acc_no==0)	acc_no=auto_incr_acc_no++;
+	}
+	
+	public void getName(){
+		System.out.println(name);
+	}
+	public void getType(){
+		System.out.println(type);
+	}
+	public void getBalance(){
+		System.out.println(balance);
+	}
+	public void getAcc_no(){
+		System.out.println(acc_no);
+	}
+	public void getter(){
+		getName(); 
+		getType(); 
+		getBalance(); 
+		getAcc_no(); 
+	}
+}
+
+
+public class Bank {
+	public static void main(String args[]){
+	Accnt A = new Accnt();
+	Scanner sc = new Scanner(System.in);
+	String Name = sc.nextLine();
+	double Balance = sc.nextInt();
+	sc.nextLine();
+	String Type = sc.nextLine();
+	A.setter(Name,Type,Balance);
+	A.getter();
+	}
+}

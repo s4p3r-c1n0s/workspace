@@ -1,0 +1,5 @@
+
+public interface UIOfficer {
+	public String OfficerWithdraw(double amount, int AccountNo);
+	public String OfficerDeposit(double amount, int AccountNo);
+}

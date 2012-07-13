@@ -1,0 +1,9 @@
+
+public class Main {
+	public static void main(String args[]){
+		GUIStudent guiStudent = new GUIStudent();
+		DOA doa = new DOA();
+		DOA.addStudent(guiStudent.getObject());
+	}
+}
+	

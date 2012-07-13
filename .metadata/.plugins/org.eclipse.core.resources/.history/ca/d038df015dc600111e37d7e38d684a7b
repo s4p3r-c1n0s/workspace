@@ -1,0 +1,9 @@
+
+class UIManager{
+	Manager manager;
+	BankFactory bankFactory = new BankFactory();
+	void ManagerFunctions(){
+		manager = bankFactory.getBankObject();
+		
+	}
+}

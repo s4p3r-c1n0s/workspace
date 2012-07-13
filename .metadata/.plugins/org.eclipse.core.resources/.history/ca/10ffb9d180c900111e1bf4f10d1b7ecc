@@ -1,0 +1,47 @@
+import java.util.*; 
+
+class Department{
+	private String dName;
+	private int dCapacity;
+	private Faculty dFaculty;
+	private ArrayList<Student> dStudents;
+	
+	Department(String Name, int Capacity, Faculty Faculty){
+		setName(Name);
+		setCapacity(Capacity);
+		setFaculty(Faculty);
+	}
+	
+	public void setName(String Name){
+		dName=Name;
+	}
+	public String getName(){
+		return dName;
+	}
+	public void setCapacity(int Capacity){
+		dCapacity=Capacity;
+	}
+	public int getCapacity(){
+		return dCapacity;
+	}
+	public void setFaculty(Faculty Faculty){
+		dFaculty=Faculty;
+	}
+	public Faculty getFaculty(){
+		return dFaculty;
+	}
+	
+	public int addStudent(Student Student, String Dept){
+		if(Student == null)
+			return 0;
+		Student.getRollNo();
+		Student.getDept(Dept);
+		dStudents.add(Student);
+		return 1;
+	}
+	
+	/*public boolean upgradeFaculty(String Q){
+		
+	}*/
+	
+}

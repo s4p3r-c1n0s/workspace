@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Factory {
+	private String name;
+	private ArrayList<Product> Products;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public ArrayList<Product> getProducts() {
+		return Products;
+	}
+	public void setProducts(ArrayList<Product> products) {
+		Products = products;
+	}
+	public Factory(String name, ArrayList<Product> products) {
+		super();
+		this.name = name;
+		Products = products;
+		}
+	
+	public int manufactureProduct(String productName, double loaborCost, RawMaterial rawMaterial, int rawMaterialQty){
+		searchProduct
+		return 0;
+	}
+}

@@ -1,0 +1,9 @@
+
+class UIOfficer{
+	Officer officer;
+	BankFactory bankFactory = new BankFactory();
+	void OfficerFunctions(){
+		officer = bankFactory.getBankObject();
+		
+	}
+}

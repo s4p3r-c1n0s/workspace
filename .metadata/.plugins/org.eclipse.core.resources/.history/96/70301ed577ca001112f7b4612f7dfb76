@@ -1,0 +1,27 @@
+import java.util.*;
+
+class GUIStudent {
+	private Student student;
+	
+	public GUIStudent(){
+		this.setAll();
+	}
+	
+	public void setAll(){
+		student = new Student();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Name : ");
+		student.setName(sc.nextLine());
+		System.out.println("Marks : ");
+		student.setMarks(sc.nextInt());
+		sc.nextLine();
+		System.out.println("Grade : ");
+		student.setGrade(sc.nextLine().charAt(0));
+	}
+	public void getAll(){
+		System.out.println("Name : "+student.getName());
+		System.out.println("Marks : "+student.getMarks());
+		System.out.println("Grade : "+student.getGrade());
+	}
+	
+}

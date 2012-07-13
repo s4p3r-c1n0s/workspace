@@ -1,0 +1,7 @@
+
+class BankFactory {
+	static Bank B = new Bank();
+	public static Bank getBankObject(){
+		return B;		
+	}
+}

@@ -1,0 +1,7 @@
+
+class CurrentAccount {
+	int overDraftLimit = 6; //months
+	String Withdraw(){
+		
+	}
+}

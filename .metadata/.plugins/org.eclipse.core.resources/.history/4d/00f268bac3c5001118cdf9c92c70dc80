@@ -1,0 +1,24 @@
+
+class SavingsAccount extends Account{
+	float rateOfInterest = 4.5f; //in % annually
+	
+	String Withdraw(double amount){
+		if(balance < amount)
+			return "Balance Too Low, Can't WITHDRAW ";
+		else{
+			balance-=amount;
+			return "The new BALANCE is: "+balance+" After WITHDRAWAL";
+		}
+	}
+	
+	String Deposit(double amount){
+		balance+=amount;
+		return "The new Balance after deposit is Rs. "+balance;
+	}
+	
+	void update(int timeInYears){
+		balance+=(balance*rateOfInterest/100);
+	}
+	
+	
+}

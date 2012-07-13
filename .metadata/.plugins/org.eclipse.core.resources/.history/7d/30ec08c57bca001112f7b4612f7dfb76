@@ -1,0 +1,50 @@
+import java.sql.*;
+
+class DOA {
+	private Connection conn ;
+	private String url ;
+	private String dbName ;
+	private String driver ;
+	private String userName ;
+	private String passwd ;
+	
+	public DOA(){
+		conn = null;
+		url = "jdbc:mysql://localhost:3306/";
+		dbName = "LL_JAVA";
+		driver = "com.mysql.jdbc.Driver";
+		userName = "root";
+		passwd = "umangjeet";
+		try {
+			Class.forName(driver).newInstance();
+			conn = DriverManager.getConnection(url+dbName,userName,passwd);	  
+			System.out.println("Connected to the database");
+		} catch (Exception e) {
+			e.printStackTrace();
+			}
+	}
+	
+	public void addStudent(Student student) throws SQLException{
+		String str = "insert into students value(null,?,?,?);";
+		PreparedStatement ps = conn.prepareStatement(str);
+		ps.setString(1, student.getName());
+		ps.setInt(2,student.getMarks());
+		ps.setString(3,student.getGrade()+"");
+		if(ps.executeUpdate()==0)
+			System.out.println("Student Added");
+		else
+			System.out.println("Student Not Added");
+		conn.close();
+		System.out.println("Disconnected from database");
+	}
+	
+	public void addAddress(Address address) throws SQLException{
+		String str = "insert into addresses value(null,?,?,?);";
+		PreparedStatement ps = conn.prepareStatement(str);
+		ps.setString(1, address.getStreet());
+		ps.setString(2,address.getCity());
+		ps.setInt(3,address.getPincode());
+		conn.close();
+		System.out.println("Disconnected from database");
+	}	
+}

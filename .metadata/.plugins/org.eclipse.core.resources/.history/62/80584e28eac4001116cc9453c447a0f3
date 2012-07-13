@@ -1,0 +1,11 @@
+import java.util.*;
+public class SecondClass {
+public static void main(String args[])
+{
+	Scanner sc = new Scanner(System.in);
+	System.out.println("lasdfkd");
+	int y= sc.nextInt();
+	String str = sc.nextLine();
+	System.out.println(str);
+	}
+}

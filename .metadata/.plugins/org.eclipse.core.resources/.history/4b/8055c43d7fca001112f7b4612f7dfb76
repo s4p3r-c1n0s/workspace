@@ -1,0 +1,33 @@
+import java.sql.SQLException;
+
+public class Main {
+	
+	private static void addStudentMain(){
+		DOA doa= new DOA();
+		GUIStudent guiStudent = new GUIStudent();
+		guiStudent.getAll();
+		try {
+			doa.addStudent(guiStudent.getObject());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void addAddressMain(){
+		DOA doa= new DOA();
+		GUIAddress guiAddress = new GUIAddress();
+		guiAddress.getAll();
+		try {
+			doa.addAddress(guiAddress.getObject());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String args[]){
+		//DOA doa = new DOA();
+		addAddressMain();
+		addStudentMain();
+	}
+}
+	

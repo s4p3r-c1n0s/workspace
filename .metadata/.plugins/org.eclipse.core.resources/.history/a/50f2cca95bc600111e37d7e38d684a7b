@@ -1,0 +1,6 @@
+
+public interface UIManager {
+	public String OpenAccount(String Name, String Type, double Balance);
+	public String CloseAccount(int AccountNo);
+	public String UpdateAccounts(int timeInYears);
+}

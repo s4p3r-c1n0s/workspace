@@ -1,0 +1,25 @@
+
+abstract class Account {
+	int acc_no;
+	double balance;
+	String name;
+	
+	static int autoIncr=1;
+	
+	abstract String Deposit(double amount);
+	abstract String Withdraw(double amount);
+	
+	public Account(String Name, double Balance){
+		this();
+		name = Name;
+		balance = Balance;
+	}
+	public Account(){
+		if (acc_no==0)	acc_no = autoIncr++;
+	}
+	
+	public String getName(){return name;}
+	public String getName(){return name;}
+	public String getName(){return name;}
+
+}

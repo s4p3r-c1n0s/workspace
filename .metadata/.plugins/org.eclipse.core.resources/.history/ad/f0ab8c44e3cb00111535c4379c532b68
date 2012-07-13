@@ -1,0 +1,266 @@
+	import java.sql.*;
+	import java.util.*;
+
+
+	class DOA {
+		private Connection conn ;
+		private String url ;
+		private String dbName ;
+		private String driver ;
+		private String userName ;
+		private String passwd ;
+		
+		static DOA doa = new DOA(); 
+		static boolean connected = false;
+		private DOA(){
+			conn = null;
+			url = "jdbc:mysql://localhost:3306/";
+			dbName = "LL_JAVA";
+			driver = "com.mysql.jdbc.Driver";
+			userName = "root";
+			passwd = "umangjeet";
+		}
+		static DOA getObject(){
+			return doa;
+		}
+		private void makeConnection() throws SQLException{
+			if(!connected){
+				try {
+					Class.forName(driver).newInstance();
+					conn = DriverManager.getConnection(url+dbName,userName,passwd);	  
+					System.out.println("Connected to the database");
+				} catch (Exception e) {
+					e.printStackTrace();
+					}
+				connected = true;
+			}
+		}
+		private void breakConnection() throws SQLException{
+			if(connected){
+				conn.close();
+				System.out.println("Disconnected from database");
+				connected = false;
+			}
+		}
+		public void insertProduct(Product product) throws SQLException{
+			makeConnection();
+			String str = "insert into addresses value(null,?,?,?);";
+			PreparedStatement ps = conn.prepareStatement(str);
+			ps.setString(1, product.getProductName());
+			ps.setDouble(2,product.getProductPrice());
+			ps.setInt(3,product.getProductQty());
+			if(ps.executeUpdate()==0)
+				System.out.println("Product Not Added");
+			else
+				System.out.println("Product Added");
+			breakConnection();
+		}
+		/*private ArrayList<Integer> getAddressesForStudent(int studentId) throws SQLException{
+			makeConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery("select id from addresses where sid = "+studentId);
+			ArrayList<Integer> addressIdList = new ArrayList<Integer>();
+			while(rs.next()){
+				addressIdList.add(rs.getInt("id"));
+			}
+			breakConnection();
+			return addressIdList;
+		}
+		private ArrayList<Integer> getIdsForStudentName(String studentName) throws SQLException{
+			makeConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery("select id from students where name LIKE '%"+studentName+"%'");
+			ArrayList<Integer> studentIdList = new ArrayList<Integer>();
+			while(rs.next()){
+				studentIdList.add(rs.getInt("id"));
+			}
+			breakConnection();
+			return studentIdList;
+		}
+		private ArrayList<Integer> getIdsForAddressStreet(String addressStreet) throws SQLException{
+			makeConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery("select id from addresses where street LIKE '%"+addressStreet+"%'");
+			ArrayList<Integer> addressIdList = new ArrayList<Integer>();
+			while(rs.next()){
+				addressIdList.add(rs.getInt("id"));
+			}
+			breakConnection();
+			return addressIdList;
+		}
+		
+		public void addStudent(Student student) throws SQLException{
+			makeConnection();
+			String str = "insert into students value(null,?,?,?);";
+			PreparedStatement ps = conn.prepareStatement(str);
+			ps.setString(1, student.getName());
+			ps.setInt(2,student.getMarks());
+			ps.setString(3,student.getGrade()+"");
+			if(ps.executeUpdate()==0)
+				System.out.println("Student Not Added");
+			else
+				System.out.println("Student Added");
+			Iterator<Address> it = student.getAddressList().iterator();
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery("select max(id) from students");
+			rs.next();
+			while(it.hasNext()){
+				addAddress(it.next(),rs.getInt(1));
+			}
+			breakConnection();
+		}
+		public void addAddress(Address address,int studentId) throws SQLException{
+			makeConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery("select max(id) from students");
+			rs.next();
+			address.setSid(rs.getInt(1));
+			address.setSid(studentId);
+			String str = "insert into addresses value(null,?,?,?,?);";
+			PreparedStatement ps = conn.prepareStatement(str);
+			ps.setString(1, address.getStreet());
+			ps.setString(2,address.getCity());
+			ps.setInt(3,address.getPincode());
+			ps.setInt(4,address.getSid());
+			if(ps.executeUpdate()==0)
+				System.out.println("Address Not Added");
+			else
+				System.out.println("Address Added");
+			breakConnection();
+		}	
+		public void viewOneAddress(int id) throws SQLException{
+			makeConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery("select * from addresses where id = "+id);
+			GUIAddress guiAddress = new GUIAddress();
+			if(rs.next()){ 
+				guiAddress.getAddressObject().setStreet(rs.getString("street"));
+				guiAddress.getAddressObject().setCity(rs.getString("city"));
+				guiAddress.getAddressObject().setPincode(rs.getInt("pincode"));
+				guiAddress.getAll();
+			}
+			breakConnection();
+		}
+		public void viewAllAddresses() throws SQLException{
+			makeConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery("select * from addresses");
+			GUIAddress guiAddress = new GUIAddress();
+			while(rs.next()){
+				guiAddress.getAddressObject().setStreet(rs.getString("street"));
+				guiAddress.getAddressObject().setCity(rs.getString("city"));
+				guiAddress.getAddressObject().setPincode(rs.getInt("pincode"));
+				guiAddress.getAll();
+			}
+			breakConnection();
+		}
+		public void viewOneStudent(int id) throws SQLException{
+			makeConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery("select * from students where id = "+id);
+			GUIStudent guiStudent = new GUIStudent();
+			if(rs.next()){
+				guiStudent.getStudentObject().setName(rs.getString("name"));
+				guiStudent.getStudentObject().setMarks(rs.getInt("marks"));
+				guiStudent.getStudentObject().setGrade(rs.getString("grade").charAt(0));
+				guiStudent.getAll();
+			}
+			breakConnection();
+		}
+		public void viewAllStudents() throws SQLException{
+			makeConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery("select * from students");
+			GUIStudent guiStudent = new GUIStudent();
+			while(rs.next()){
+				guiStudent.getStudentObject().setName(rs.getString("name"));
+				guiStudent.getStudentObject().setMarks(rs.getInt("marks"));
+				guiStudent.getStudentObject().setGrade(rs.getString("grade").charAt(0));
+				guiStudent.getAll();
+			}
+			breakConnection();
+		}
+		public void deleteFromAddresses(int id) throws SQLException{
+			makeConnection();
+			String str = "delete from addresses where id = "+id+"";
+			PreparedStatement ps = conn.prepareStatement(str);
+			if(ps.executeUpdate()==0)
+				System.out.println("Address Not Deleted");
+			else
+				System.out.println("Address Deleted");
+			breakConnection();
+		}
+		public void deleteFromStudents(int id) throws SQLException{
+			makeConnection();
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			ResultSet rs = stmt.executeQuery("select * from students where id="+id);
+			while(rs.next()){
+				rs.deleteRow();
+			}
+			String str = "delete from students where id = "+id+"";
+			PreparedStatement ps = conn.prepareStatement(str);
+			if(ps.executeUpdate()==0)
+				System.out.println("Student Not Deleted");
+			else{
+				System.out.println("Student Deleted");
+				Iterator<Integer> it = getAddressesForStudent(id).iterator();
+				while(it.hasNext()){
+					deleteFromAddresses(it.next());
+				}
+			}
+			breakConnection();
+		}
+		public void updateAddress(int id) throws SQLException{
+			makeConnection();
+			GUIAddress guiAddress = new GUIAddress();
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			ResultSet rs = stmt.executeQuery("select * from addresses where id="+id);
+			if(rs.next()){
+				guiAddress.setAll();
+				rs.updateString("street",guiAddress.getAddressObject().getStreet());
+				rs.updateString("city",guiAddress.getAddressObject().getCity());
+				rs.updateInt("pincode",guiAddress.getAddressObject().getPincode());
+				rs.updateRow();
+			}
+			breakConnection();
+		}
+		public void updateAddress(String addressStreet) throws SQLException{
+			makeConnection();
+			Iterator<Integer> it = getIdsForAddressStreet(addressStreet).iterator();
+			while(it.hasNext()){
+				updateAddress(it.next());
+			}
+			breakConnection();
+		}
+		public void updateStudent(int id) throws SQLException{
+			makeConnection();
+			GUIStudent guiStudent = new GUIStudent();
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			ResultSet rs = stmt.executeQuery("select * from students where id="+id);
+			if(rs.next()){
+				guiStudent.setAll();
+				rs.updateString("name",guiStudent.getStudentObject().getName());
+				rs.updateInt("marks",guiStudent.getStudentObject().getMarks());
+				rs.updateString("grade",guiStudent.getStudentObject().getGrade()+"");
+				rs.updateRow();
+			}
+			Iterator<Integer> it2 = getAddressesForStudent(id).iterator();
+			while(it2.hasNext()){
+				updateAddress(it2.next());
+			}
+			Iterator<Address> it1 = guiStudent.getStudentObject().getAddressList().iterator();
+			while(it1.hasNext()){
+				addAddress(it1.next(),id);
+			}
+			breakConnection();
+		}
+		public void updateStudent(String studentName) throws SQLException{
+			makeConnection();
+			Iterator<Integer> it = getIdsForStudentName(studentName).iterator();
+			while(it.hasNext()){
+				updateStudent(it.next());
+			}
+			breakConnection();
+		}
+	}*/
+}

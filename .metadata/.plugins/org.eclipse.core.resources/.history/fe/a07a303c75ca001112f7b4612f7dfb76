@@ -1,0 +1,10 @@
+
+public class Main {
+	public static void main(String args[]){
+		GUIStudent guiStudent = new GUIStudent();
+		guiStudent.getAll();
+		GUIAddress guiAddress = new GUIAddress();
+		guiAddress.getAll();
+	}
+}
+	

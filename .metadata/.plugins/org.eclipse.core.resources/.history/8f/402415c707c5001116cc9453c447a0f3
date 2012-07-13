@@ -1,0 +1,83 @@
+import java.util.*;
+class Accnt{
+	  
+	private int acc_no;
+	private double balance;
+	private String name;
+	private String type;
+	
+	static int auto_incr_acc_no = 1;
+	
+	public Accnt(){
+		acc_no=auto_incr_acc_no++;
+	}
+	
+	public Accnt(String Name, String Type, double Balance){
+		setter(Name,Type,Balance);
+	}
+	public void setter(String Name, String Type, double Balance){
+		name=Name;
+		type=Type;
+		balance = Balance;
+		if(acc_no==0)	acc_no=auto_incr_acc_no++;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	public String getType(){
+		return type;
+	}
+	public double getBalance(){
+		return balance;
+	}
+	public int getAcc_no(){
+		return acc_no;
+	}
+	public void getter(){
+		System.out.println("Name: "+getName()+"\nType: "+getType()+"\nAccount No.: "+getAcc_no()+"\nRs "+getBalance()+"\n\n"); 
+	}
+	
+	String Withdraw(double amt){
+		if((balance < 2000 && type.equals("Current")) || (balance < 10000 && type.equals("Savings")) )
+			return "Balance too Low";
+		else{
+			balance-=amt;
+			return "After withdrawal.. New balance is " + balance;
+		}
+	}
+	
+	String Deposit(double amt){
+		balance += amt;
+		return "After deposit.. New balance is "+balance;
+	}
+}
+
+
+public class Bank {
+	public static void main(String args[]){
+		Scanner sc = new Scanner(System.in);
+		String Name = sc.nextLine();
+		String Type = sc.nextLine();
+		double Balance = sc.nextInt();
+	/*
+	String Name = args[0];
+	String Type = args[1];
+	double Balance = Double.parseDouble(args[2]);
+	*/
+		Accnt A = new Accnt(Name, Type, Balance);
+		A.getter();
+		System.out.println(A.Deposit(8000.0));
+		System.out.println(A.Withdraw(2000.0));
+		sc.nextLine();
+		String S = new String();
+		while(true){
+			S = sc.nextLine();
+			switch(S.charAt(0)){
+				case 'w' : System.out.println(A.Withdraw(2000));break;
+				case 'd' : System.out.println(A.Deposit(8000));break;
+				case 'q' : System.exit(0);break;
+			}
+		}
+	}
+}

@@ -1,0 +1,49 @@
+
+public class Bank {
+	static final int num=10;
+	private Account A[] = new Account[num];
+	public String OpenAccount(String Name, String Type, double Balance){
+		int i=0;
+		for(;i<num;i++)
+			if(A[i]==null){
+				if(Type.equals("Savings"))
+					A[i] = new SavingsAccount(Name,Balance);
+				if(Type.equals("Current"))
+					A[i] = new CurrentAccount(Name,Balance);
+				return "Account created at "+i;
+			}
+		return "No more Accounts can be created. "+i+" Accounts are full";
+	}
+	
+	public String CloseAccount(int AccountNo){
+		int found = SearchAccountNoPosition(AccountNo);
+		if(found != -1)
+			return "Account "+A[found].getAccountNo()+" Deleted. Pending Balance Rs. "+A[found].getBalance();
+		else 
+			return "Account "+A[found].getAccountNo()+" Not Found !!";
+	}
+	
+	private int SearchAccountNoPosition(int AccountNo){
+		int found = -1;
+		for(int i=0;i<num;i++)
+			if(A[i]!=null && A[i].getAccountNo() == AccountNo)
+					found = i;
+		return found;
+	}
+	
+	public String UpdateAccount(int timeInYears){
+		String str = new String();
+		for(int i=0;i<10;i++)
+			if(A[i]!=null && A[i] instanceof SavingsAccount){
+				SavingsAccount s = (SavingsAccount)A[i];
+				s.update(timeInYears);
+				str+=A[i].getAccountNo()+" ";
+			}
+		return str;
+	}
+	
+	public String WithdrawFromAccount(double amount, int AccountNo){
+		int found = SearchAccountNoPosition();
+		return "A";
+	}
+}

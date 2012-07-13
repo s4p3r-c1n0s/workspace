@@ -1,0 +1,6 @@
+
+public interface UIManager {
+	void createNewDept();
+	void createNewFaculty();
+	void createNewStudent();
+}

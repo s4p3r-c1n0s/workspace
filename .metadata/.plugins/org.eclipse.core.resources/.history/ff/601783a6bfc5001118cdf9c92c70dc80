@@ -1,0 +1,10 @@
+
+abstract class Account {
+	int acc_no;
+	double balance;
+	String name;
+	
+	abstract String Deposit();
+	abstract String Withdraw();
+
+}

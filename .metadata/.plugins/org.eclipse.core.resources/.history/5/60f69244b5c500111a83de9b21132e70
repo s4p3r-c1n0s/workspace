@@ -1,0 +1,21 @@
+import java.util.*;
+public class SecondClass {
+public static void main(String args[])
+{
+	Scanner sc = new Scanner(System.in);
+	System.out.println("lasdfkd");
+	int y = sc.nextInt();
+	sc.nextLine();
+	double f = sc.nextDouble();
+	sc.nextLine();
+	float g = sc.nextFloat();
+	sc.nextLine();
+	double h = sc.nextDouble();
+	sc.nextLine();
+	String str = sc.nextLine();
+	System.out.println(f+g+str+y+h);
+	int i = 7;
+	i=i++;
+	System.out.println(i);
+	}
+}

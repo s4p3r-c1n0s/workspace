@@ -1,0 +1,32 @@
+
+class Product {
+	private String productName;
+	private double productPrice;
+	private int ProductQty;
+	public Product(){
+	}
+	public Product(String productName, double productPrice, int productQty) {
+		super();
+		this.productName = productName;
+		this.productPrice = productPrice;
+		ProductQty = productQty;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public double getProductPrice() {
+		return productPrice;
+	}
+	public void setProductPrice(double productPrice) {
+		this.productPrice = productPrice;
+	}
+	public int getProductQty() {
+		return ProductQty;
+	}
+	public void setProductQty(int productQty) {
+		ProductQty = productQty;
+	}
+}

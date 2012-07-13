@@ -1,0 +1,25 @@
+
+class RawMaterial {
+	private String name;
+	private double ratePerunit;
+	public RawMaterial(){
+		super();
+	}
+	public RawMaterial(String name, double ratePerunit) {
+		super();
+		this.name = name;
+		this.ratePerunit = ratePerunit;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getRatePerunit() {
+		return ratePerunit;
+	}
+	public void setRatePerunit(double ratePerunit) {
+		this.ratePerunit = ratePerunit;
+	}
+}

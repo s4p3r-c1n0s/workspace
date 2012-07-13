@@ -1,0 +1,27 @@
+
+abstract class Account {
+	int acc_no;
+	double balance;
+	String name;
+	
+	static int autoIncr=1;
+	
+	abstract String Deposit(double amount);
+	abstract String Withdraw(double amount);
+	
+	private int assignAccntNo(){
+		if (acc_no!=0)
+		return autoIncr++;
+		else return acc_no;
+	}
+	
+	public Account(String Name, double Balance){
+		name = Name;
+		acc_no=assignAccntNo();
+		balance=Balance;
+	}
+	public Account(){
+		acc_no=assignAccntNo();
+	}
+
+}

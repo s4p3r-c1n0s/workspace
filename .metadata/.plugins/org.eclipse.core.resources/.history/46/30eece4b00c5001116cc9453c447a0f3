@@ -1,0 +1,18 @@
+class Accnt{
+	int acc_no;
+	double balance;
+	String Name;
+	String type;
+	
+	static int auto_incr_acc_no = 1;
+	
+	public Accnt(String NAME, String TYPE, double BAL){
+		
+	}
+	
+}
+
+
+public class Bank {
+
+}

@@ -1,0 +1,46 @@
+import java.util.*;
+
+class GUIStudent {
+	private Student student;
+	
+	public GUIStudent(){
+		student = new Student();
+	}
+	
+	public void setAll(){
+		student = new Student();
+		GUIAddress guiAddress =new GUIAddress(); 
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Name : ");
+		student.setName(sc.nextLine());
+		System.out.println("Marks : ");
+		student.setMarks(sc.nextInt());
+		sc.nextLine();
+		System.out.println("Grade : ");
+		student.setGrade(sc.nextLine().charAt(0));
+		System.out.println("How many Addresses?");
+		int i=sc.nextInt(); sc.nextLine();
+		while(i>0){
+			guiAddress.setAll();
+			student.setAddress(guiAddress.getAddressObject());
+			i--;
+		}
+	}
+	public void getAll(){
+		System.out.println("Name : "+student.getName());
+		System.out.println("Marks : "+student.getMarks());
+		System.out.println("Grade : "+student.getGrade());
+		/*
+		GUIAddress guiAddress =new GUIAddress();
+		student.getAddressList();
+		while(){
+			guiAddress.getAll();
+		}
+		*/
+		
+	}
+	public Student getStudentObject(){
+		return this.student;
+	}
+	
+}

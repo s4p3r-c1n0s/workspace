@@ -1,0 +1,68 @@
+import java.sql.*;
+
+class DOA {
+	private Connection conn ;
+	private String url ;
+	private String dbName ;
+	private String driver ;
+	private String userName ;
+	private String passwd ;
+	
+	static DOA doa = new DOA(); 
+	
+	private DOA(){
+		doa.conn = null;
+		doa.url = "jdbc:mysql://localhost:3306/";
+		doa.dbName = "LL_JAVA";
+		doa.driver = "com.mysql.jdbc.Driver";
+		doa.userName = "root";
+		doa.passwd = "umangjeet";
+	}
+	
+	static DOA getObject(){
+		return doa;
+	}
+	
+	private void makeConnection(){
+		try {
+			Class.forName(driver).newInstance();
+			conn = DriverManager.getConnection(url+dbName,userName,passwd);	  
+			System.out.println("Connected to the database");
+		} catch (Exception e) {
+			e.printStackTrace();
+			}
+	}
+	
+	 private void breakConnection() throws SQLException{
+		conn.close();
+		System.out.println("Disconnected from database");
+	}
+	
+	public void addStudent(Student student) throws SQLException{
+		makeConnection();
+		String str = "insert into students value(null,?,?,?);";
+		PreparedStatement ps = conn.prepareStatement(str);
+		ps.setString(1, student.getName());
+		ps.setInt(2,student.getMarks());
+		ps.setString(3,student.getGrade()+"");
+		if(ps.executeUpdate()==0)
+			System.out.println("Student Added");
+		else
+			System.out.println("Student Not Added");
+		breakConnection();
+	}
+	
+	public void addAddress(Address address) throws SQLException{
+		makeConnection();
+		String str = "insert into addresses value(null,?,?,?);";
+		PreparedStatement ps = conn.prepareStatement(str);
+		ps.setString(1, address.getStreet());
+		ps.setString(2,address.getCity());
+		ps.setInt(3,address.getPincode());
+		if(ps.executeUpdate()==0)
+			System.out.println("Address Added");
+		else
+			System.out.println("Address Not Added");
+		breakConnection();
+	}	
+}

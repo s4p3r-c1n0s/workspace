@@ -1,0 +1,61 @@
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class Main {
+	
+	private static void addStudentMain(){
+		DOA doa= DOA.getObject();
+		GUIStudent guiStudent = new GUIStudent();
+		guiStudent.setAll();
+		try {
+			doa.addStudent(guiStudent.getStudentObject());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		guiStudent.getAll();
+	}
+	
+	private static void viewStudentsMain(){
+		DOA doa = DOA.getObject();
+		try {
+			doa.viewAllStudents();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void viewAddressesMain(){
+		DOA doa = DOA.getObject();
+		try {
+			doa.viewAllAddresses();			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void addAddressMain(){
+		DOA doa= DOA.getObject();
+		GUIAddress guiAddress = new GUIAddress();
+		guiAddress.setAll();
+		try {
+			doa.addAddress(guiAddress.getAddressObject());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		guiAddress.getAll();
+	}
+	
+	public static void main(String args[]){
+		
+		Scanner sc = new Scanner(System.in);
+		char ch;
+		while(true){
+			ch = sc.nextLine().charAt(0);
+			switch(ch){
+			case 1 : 
+		}
+		}
+		
+		addAddressMain();
+		addStudentMain();
+	}
+}
+	

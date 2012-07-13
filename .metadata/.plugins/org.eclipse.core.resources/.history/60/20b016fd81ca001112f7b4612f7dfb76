@@ -1,0 +1,81 @@
+import java.sql.*;
+
+class DOA {
+	private Connection conn ;
+	private String url ;
+	private String dbName ;
+	private String driver ;
+	private String userName ;
+	private String passwd ;
+	
+	static DOA doa = new DOA(); 
+	
+	private DOA(){
+		conn = null;
+		url = "jdbc:mysql://localhost:3306/";
+		dbName = "LL_JAVA";
+		driver = "com.mysql.jdbc.Driver";
+		userName = "root";
+		passwd = "umangjeet";
+	}
+	
+	static DOA getObject(){
+		return doa;
+	}
+	
+	private void makeConnection(){
+		try {
+			Class.forName(driver).newInstance();
+			conn = DriverManager.getConnection(url+dbName,userName,passwd);	  
+			System.out.println("Connected to the database");
+		} catch (Exception e) {
+			e.printStackTrace();
+			}
+	}
+	
+	 private void breakConnection() throws SQLException{
+		conn.close();
+		System.out.println("Disconnected from database");
+	}
+	
+	public void addStudent(Student student) throws SQLException{
+		makeConnection();
+		String str = "insert into students value(null,?,?,?);";
+		PreparedStatement ps = conn.prepareStatement(str);
+		ps.setString(1, student.getName());
+		ps.setInt(2,student.getMarks());
+		ps.setString(3,student.getGrade()+"");
+		if(ps.executeUpdate()==0)
+			System.out.println("Student Not Added");
+		else
+			System.out.println("Student Added");
+		breakConnection();
+	}
+	
+	public void addAddress(Address address) throws SQLException{
+		makeConnection();
+		String str = "insert into addresses value(null,?,?,?);";
+		PreparedStatement ps = conn.prepareStatement(str);
+		ps.setString(1, address.getStreet());
+		ps.setString(2,address.getCity());
+		ps.setInt(3,address.getPincode());
+		if(ps.executeUpdate()==0)
+			System.out.println("Address Not Added");
+		else
+			System.out.println("Address Added");
+		breakConnection();
+	}	
+	
+	public void viewAllAddresses() throws SQLException{
+		makeConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs= stmt.executeQuery("select * from students");
+		GUIAddress guiAddress = new GUIAddress();
+		while(rs.next()){
+			guiAddress.getAddress().setStreet(rs.getString("street"));
+			guiAddress.getAddress().setCity(rs.getString("city"));
+			guiAddress.getAddress().setPincode(rs.getInt("pincode"));
+		}
+		breakConnection();
+	}
+}
