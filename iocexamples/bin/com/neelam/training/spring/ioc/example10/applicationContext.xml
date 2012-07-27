@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE beans PUBLIC 
+"-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd"> 
+
+<beans>
+
+	<bean id="currencyConverter" 
+		class="com.neelam.training.spring.ioc.example10.CurrencyConverterImpl" 
+		init-method="setup" destroy-method="cleanup">
+		<property name="exchangeRate" value="44.50" />
+	</bean>
+<bean class="com.neelam.training.spring.ioc.example10.BeanProcessor">
+	
+	</bean>
+	
+	<bean class="com.neelam.training.spring.ioc.example10.BeanInitializationLogger" >
+	
+	</bean>
+	
+	
+	<bean class="com.neelam.training.spring.ioc.example10.AllBeansLister" />
+	
+	
+	
+</beans>
+
+
+
+
+

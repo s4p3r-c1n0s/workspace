@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="dataSourceDBDirect"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${driverClassName}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean>
+	
+	<!-- 
+  <bean id="dataSourceDBDirect"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+        destroy-method="close">
+    <property name="driverClassName" value="${driverClassName}"/>
+    <property name="url" value="${url}"/>
+    <property name="username" value="${username}"/>
+    <property name="password" value="${password}"/>
+  </bean>
+  	-->
+  
+  	<bean 
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+		
+		<value>classpath:com/neelam/training/spring/ioc/example7/jdbc.properties</value></property>
+	</bean>
+  
+  <bean id="employeeDAO" class="com.neelam.training.spring.ioc.example7.EmployeeJdbcDAO">
+    <property name="dataSource">
+      <ref local="dataSourceDBDirect"/>
+    </property>
+  </bean>
+  
+  <bean id="employeeService" class="com.neelam.training.spring.ioc.example7.EmployeeServiceImpl">
+    <property name="employeeDao">
+      <ref local="employeeDAO"/>
+    </property>
+  </bean>
+
+</beans>

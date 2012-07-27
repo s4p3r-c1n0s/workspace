@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="dataSourceDBDirect"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		>
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/test" />
+		<property name="username" value="root" />
+		<property name="password" value="1234" />
+		
+	</bean>
+	
+	<!-- 
+  <bean id="dataSourceDBDirect"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+        destroy-method="close">
+    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+    <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+    <property name="username" value="scott"/>
+    <property name="password" value="tiger"/>
+  </bean>
+  	-->
+  
+  <bean id="employeeDAO" class="com.neelam.training.spring.ioc.example6.EmployeeJdbcDAO">
+    <property name="dataSource">
+      <ref bean="dataSourceDBDirect"/>
+    </property>
+  </bean>
+  
+  <bean id="employeeService" class="com.neelam.training.spring.ioc.example6.EmployeeServiceImpl">
+    <property name="employeeDao">
+      <ref local="employeeDAO"/>
+    </property>
+  </bean>
+
+</beans>

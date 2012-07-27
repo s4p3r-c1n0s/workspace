@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE beans PUBLIC 
+"-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="currencyConverter" class="mypack.CurrencyConverterImpl"
+		init-method="setup" destroy-method="cleanup">
+		<property name="exchangeRate" value="44.50" />
+	</bean>
+
+
+<bean class="mypack.BeanProcessor"/>
+	<bean class="mypack.AllBeansLister" />
+	<bean class="mypack.BeanInitializationLogger"/>
+
+	
+
+	
+
+
+</beans>
+
+
+
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE beans PUBLIC 
+"-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd"> 
+
+<beans>
+
+	<bean id="customer" 
+		class="com.neelam.training.spring.ioc.example11.Customer">
+		<property name="name" value="Neelam"> </property>
+		<property name="age" value="-45"></property>
+		<property name="address" ref="add"></property>
+	</bean>
+	<bean id="add" class="com.neelam.training.spring.ioc.example11.Address">
+	<property name="country" value="India"></property>
+	</bean>
+	<bean id="validate1" 
+		class="com.neelam.training.spring.ioc.example11.ValidatorTest">
+	</bean>
+<bean id="validate2" 
+		class="com.neelam.training.spring.ioc.example11.CustomerValidator">
+		<constructor-arg ref="addValidate"></constructor-arg>
+	</bean>
+	
+	<bean id="addValidate" 
+		class="com.neelam.training.spring.ioc.example11.AddressValidator">
+	</bean>
+</beans>

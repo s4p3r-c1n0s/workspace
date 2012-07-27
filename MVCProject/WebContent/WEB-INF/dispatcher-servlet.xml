@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE beans PUBLIC 
+"-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans>
+<bean name="mainController" class="controllers.MainController"/>
+
+ 
+ <bean id="validator1" class="controllers.ValidatorTest"/>
+ 
+ <bean id="testController" class="controllers.TestController">
+ <property name="commandClass" value="controllers.Test"></property>
+ </bean>
+ 
+ <bean id="myResolver"
+ class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver" >
+ <property name="paramName" value="s1">
+ </property>
+ </bean>
+  
+ <bean id="multiactionController" class="controllers.MultiController">
+ <property name="methodNameResolver" ref="myResolver"></property>
+ </bean>
+ 
+
+ <bean id="formController" class="controllers.FormController">
+ <property name="commandName"><value>test</value></property>
+ <property name="commandClass"><value>controllers.Test</value></property>
+ <property name="validator"><ref bean="validator1"/></property>
+ 
+ <property name="formView"><value>form</value></property>
+ <property name="successView"><value>TestData</value></property>
+ </bean>
+ 
+ <bean id="multipageController" class="controllers.MultiPageController">
+   <property name="sessionForm" value="true"/>
+ 
+ <property name="pages">
+ <list>
+ <value>first</value>
+ <value>second</value>
+ <value>third</value>
+ </list>
+ </property>
+ </bean>
+<bean id="requestHandlerMapping"
+class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+		<value>
+		/*.do = mainController
+		/test.req=testController
+		/form.req=formController
+		/multipage.req=multipageController
+		/multiaction.req=multiactionController
+		</value>			
+		</property>
+	</bean>
+	
+<bean id="viewResolver"
+class="org.springframework.web.servlet.view.InternalResourceViewResolver">	
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean> 
+	
+	<bean id="exampleDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	 	<property name="driverClassName"
+			value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=mydb" />
+		<property name="username" value="neelam" />
+		<property name="password" value="neelam" />
+	</bean>
+		 
+	<bean id="exampleSessionFactory" 
+	class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource"><ref local="exampleDataSource"/></property>
+		
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+				hibernate.current_session_context_class = thread
+			hibernate.hbm2ddl.auto=create
+				hibernate.show_sql=true
+			</value>    
+		</property>
+		<property name="mappingResources">
+			<list>
+		        <value>controllers/FormData.hbm.xml</value>
+		   	</list>
+		</property>		
+	</bean>
+</beans>
+
+
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC 
+"-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="currencyConverter" class="com.neelam.training.spring.ioc.example4.CurrencyConverterImpl">
+		<property name="exchangeServiceName">
+			<idref local="exService" />
+		</property>
+	</bean>
+
+	<bean id="exService" class="com.neelam.training.spring.ioc.example4.ExchangeServiceImpl" singleton="false" />
+
+</beans>
+
+
+
+
+
+

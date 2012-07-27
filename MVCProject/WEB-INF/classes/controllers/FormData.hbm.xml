@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="controllers.FormData" table="testtable">
+
+        <id name="id"   column="testid" type="int">
+            <generator class="native">
+            </generator>
+        </id>
+        
+         <property  name="name"  column="testname"   type="string" />
+
+         <property  name="age"  column="testage"   />
+         
+            <property  name="qual"  column="testqual"   />
+            <property  name="exp"  column="testexp"   />
+            <property  name="location"  column="testlocation"   />
+		       
+    </class>
+</hibernate-mapping>

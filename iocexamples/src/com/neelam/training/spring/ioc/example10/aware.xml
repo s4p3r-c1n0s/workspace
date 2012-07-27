@@ -1,0 +1,8 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <bean id="contextAware" class="com.neelam.training.spring.ioc.example10.ContextAwareDemo"/>
+
+<bean id="contextAware1" class="com.neelam.training.spring.ioc.example10.ContextAwareDemo"/>
+<bean id="displayContext" class="com.neelam.training.spring.ioc.example10.displayContext"/>
+</beans>

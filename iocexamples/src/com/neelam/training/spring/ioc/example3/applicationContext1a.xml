@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC 
+"-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean singleton="false" id="currencyConverter" class="com.neelam.training.spring.ioc.example3.CurrencyConverterImpl" >
+	<constructor-arg><value>23</value></constructor-arg>
+		<property name="exchangeService">
+			<ref bean="exService" />
+		</property>
+	</bean>
+
+</beans>
+
+
+
+
+
+

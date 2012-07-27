@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE beans PUBLIC 
+"-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd"> 
+
+<beans>
+
+<bean id="flight" class="com.neelam.training.spring.ioc.common.Flight" singleton="false">
+<constructor-arg name="flightNo" value="102"></constructor-arg>
+
+</bean>
+
+	<!-- <bean id="currencyConverter" 
+		class="com.neelam.training.spring.ioc.example1.CurrencyConverterImpl">
+		<property name="exchangeRate" value="44.50" />
+	</bean>
+
+	<bean id="flightService"
+		class="com.neelam.training.spring.ioc.example1.FlightServiceDao" singleton="true">
+		<property name="tableName" value="flights_test" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	
+<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		destroy-method="close">
+		<property name="driverClassName"
+			value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=mydb" />
+		<property name="username" value="neelam" />
+		<property name="password" value="neelam" />
+	</bean>
+ -->	
+</beans>
+
+
+
+
+

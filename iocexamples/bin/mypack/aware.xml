@@ -1,0 +1,8 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <bean id="contextAware" class="mypack.ContextAwareDemo"/>
+
+<bean id="contextAware1" class="mypack.ContextAwareDemo"/>
+<bean id="displayContext" class="mypack.displayContext"/>
+</beans>

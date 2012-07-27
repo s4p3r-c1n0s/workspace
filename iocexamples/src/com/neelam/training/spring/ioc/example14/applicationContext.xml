@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE beans PUBLIC 
+"-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd"> 
+
+<beans>
+ <!-- 
+	<bean id="emp" 
+		class="com.neelam.training.spring.ioc.example14.Employee">
+		<property name="id" value="1"/>
+		<property name="name" value="Neelam"/>
+		<property name="salary" value="10000"/>
+	</bean>
+
+<bean id="manager" parent="emp" class="com.neelam.training.spring.ioc.example14.Manager">
+<property name="bonus" value="5000"/>
+</bean>
+ -->
+<bean id="emp" 
+		class="com.neelam.training.spring.ioc.example14.Employee">
+		<constructor-arg><value>12</value></constructor-arg>
+		<constructor-arg><value>Neelam</value></constructor-arg>
+		<constructor-arg><value>10000</value></constructor-arg>
+	</bean>
+
+<bean id="manager"  parent="emp" class="com.neelam.training.spring.ioc.example14.Manager">
+<constructor-arg><value>5000</value></constructor-arg>
+</bean>
+	
+</beans>
+
+
+
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<bean id="serviceClass" class="com.neelam.training.spring.ioc.example10.SomeServiceClass">
+		<property name="adminEmails">
+			<props>
+				<prop key="administrator">
+					administrator@somecompany.org
+				</prop>
+				<prop key="support">support@somecompany.org</prop>
+				<prop key="development">
+					development@somecompany.org
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="adminEmailConfig" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	  <property name="location" value="classpath:com/neelam/training/spring/ioc/example10/admin.properties"/>
+	</bean>
+	
+	<util:properties id="adminEmails" location="classpath:com/neelam/training/spring/ioc/example10/admin.properties"/>
+	
+	<bean id="serviceClass2" class="com.neelam.training.spring.ioc.example10.SomeServiceClass">
+		<property name="adminEmails">
+			<ref local="adminEmailConfig" />
+		</property>
+	</bean>
+</beans>
+
+
+
+
+

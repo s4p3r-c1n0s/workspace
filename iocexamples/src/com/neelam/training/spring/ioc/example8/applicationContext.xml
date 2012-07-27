@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE beans PUBLIC 
+"-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd"> 
+
+<beans>
+
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="java.util.Date">
+				
+					<bean class="com.neelam.training.spring.ioc.example8.SQLDateEditor" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="someProcessing"
+		class="com.neelam.training.spring.ioc.example8.SomeProcessing">
+		<property name="startDate" value="getdate"></property>
+		<property name="endDate"><value>12-09-2012</value></property>
+	</bean>
+		
+</beans>
+
+
+
+
+
+
+
+
+
+
