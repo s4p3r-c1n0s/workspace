@@ -30,7 +30,6 @@ public class FormController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
- 
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
 	
@@ -47,16 +46,13 @@ public class FormController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(@ModelAttribute("formdata") User user, SessionStatus status) {
-		System.out.println(user.getName());
-		
+		System.out.println(user.getName());	
 		//return "LoginSuccess";
 		status.setComplete();
 		return "redirect:LoginSuccess.jsp";
 	}
-	
 	@ModelAttribute("webFrameworkList")
 	public List<String> populateWebFrameworkList() {
- 
 		//Data referencing for web framework checkboxes
 		List<String> webFrameworkList = new ArrayList<String>();
 		webFrameworkList.add("Spring MVC");
@@ -64,12 +60,6 @@ public class FormController {
 		webFrameworkList.add("Struts 2");
 		webFrameworkList.add("JSF");
 		webFrameworkList.add("Apache Wicket");
- 
 		return webFrameworkList;
 	}
-
 }
-
-
-
-
