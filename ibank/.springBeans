@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.2.7.200910202224-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>WebContent/WEB-INF/ibank-persistence.xml</config>
+		<config>WebContent/WEB-INF/ibank-service.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[ibank-beans]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>WebContent/WEB-INF/ibank-persistence.xml</config>
+				<config>WebContent/WEB-INF/ibank-service.xml</config>
+				<config>WebContent/WEB-INF/ibank-servlet.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>

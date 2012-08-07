@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/home.htm">homePageController</prop>
+				<prop key="/adminhome.htm">adminHomePageController</prop>
+				<prop key="/createcust.htm">newCustomerController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<bean id="homePageController" class="org.himu.ibank.controller.HomePageController"/>
+	
+	<bean id="adminHomePageController" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="admin/admin"/>
+	</bean>
+	
+	<bean id="newCustomerController" class="org.himu.ibank.controller.NewCustomerController">
+		<property name="custRegService" ref="customerRegService"/>
+		<property name="formView" value="admin/newcustomer"/>
+		<property name="successView" value="admin/newcustomer-success"/>
+		<property name="commandName" value="customer"/>
+		<property name="commandClass" value="org.himu.ibank.domain.Customer"/>
+	</bean>
+</beans>

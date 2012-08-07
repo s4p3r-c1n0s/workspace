@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring Framework 2.5.6.SEC01">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring Framework 2.5.6.SEC01 MVC">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate 3.3.2 Core">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate 3.4.0 Annotations">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSTL 1.2">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Log4J 1.2.15">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MySQL ConnectorJ 5.1.6">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Slf4J 1.5.8">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-6-sun-1.6.0.26">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/required/slf4j-simple-1.6.6.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/required/slf4j-api-1.6.6.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/required/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/required/javassist-3.12.0.GA.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/required/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/required/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/required/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/hibernate-entitymanager.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/hibernate3.jar"/>
+	<classpathentry kind="lib" path="/home/umangjeet/Desktop/Hibernate/ejb3-persistence.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

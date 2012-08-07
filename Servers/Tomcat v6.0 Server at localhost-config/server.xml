@@ -131,7 +131,7 @@
                prefix="localhost_access_log." suffix=".txt" pattern="common" resolveHosts="false"/>
         -->
 
-      <Context docBase="Albums" path="/Albums" reloadable="true" source="org.eclipse.jst.jee.server:Albums"/><Context docBase="STATE_C" path="/STATE_C" reloadable="true" source="org.eclipse.jst.jee.server:STATE_C"/><Context docBase="MVCAnnotation" path="/MVCAnnotation" reloadable="true" source="org.eclipse.jst.jee.server:MVCAnnotation"/></Host>
+      <Context docBase="Spring3HibernateMaven" path="/Spring3HibernateMaven" reloadable="true" source="org.eclipse.jst.jee.server:Spring3HibernateMaven"/></Host>
     </Engine>
   </Service>
 </Server>
